@@ -1,6 +1,8 @@
 <template>
   <nav class="desktop-nav" if:true={isDesktop}>
-    <div class="logo">John Doe</div>
+    <div class="logo">
+      <a data-target="profile" onclick={scrollToSection}><img src={awLogo} alt="Company logo" style="width:120px;height:auto" /></a>
+    </div>
     <div>
       <ul class="nav-links">
         <li><a data-target="about" onclick={scrollToSection}>About</a></li>
@@ -13,7 +15,9 @@
 
 
   <nav class="hamburger-nav" if:false={isDesktop}>
-    <div class="logo">John Doe</div>
+    <div class="logo">
+      <a data-target="profile" onclick={scrollToSection}><img src={awLogo} alt="Company logo" style="width:120px;height:auto" /></a>
+    </div>
     <div class="hamburger-menu">
       <div class={hamburgerIconClass} role="button" tabindex="0" onclick={toggleMenu} onkeydown={handleKeydown}>
         <span></span>
@@ -40,11 +44,11 @@
       <p class="section__text__p2">Salesforce Developer</p>
       <div class="btn-container">
         <button class="btn btn-color-2" onclick={downloadResume}>Download CV</button>
-        <button class="btn btn-color-1" onclick={goToContact}>Contact Info</button>
+        <button class="btn btn-color-1" onclick={goToContact}>Contact</button>
       </div>
       <div class="socials-container">
-        <img src={linkedinIcon} alt="My LinkedIn profile" class="icon" data-href="https://linkedin.com/" onclick={openExternal}/>
-        <img src={githubIcon} alt="My Github profile" class="icon" data-href="https://github.com/" onclick={openExternal}/>
+        <img src={linkedinIcon} alt="My LinkedIn profile" class="icon" data-href="https://www.linkedin.com/in/aashay-wase-%E2%98%81%EF%B8%8F-1647b3165/" onclick={openExternal}/>
+        <img src={githubIcon} alt="My Github profile" class="icon" data-href="https://github.com/Aashay2701" onclick={openExternal}/>
       </div>
     </div>
   </section>
@@ -54,7 +58,7 @@
     <p class="section__text__p1">Get To Know More</p>
     <h1 class="title">About Me</h1>
     <div class="section-container">
-      <div class="section__pic-container">
+      <div class="section__pic-container1">
         <img src={aboutPic} alt="Profile picture" class="about-pic"/>
       </div>
       <div class="about-details-container">
@@ -62,12 +66,12 @@
           <div class="details-container">
             <img src={experienceIcon} alt="Experience icon" class="icon"/>
             <h3>Experience</h3>
-            <p>2+ years <br/>Frontend Development</p>
+            <p>5+ years <br/>Salesforce Development</p>
           </div>
           <div class="details-container">
             <img src={educationIcon} alt="Education icon" class="icon"/>
             <h3>Education</h3>
-            <p>B.Sc. Bachelors Degree<br/>M.Sc. Masters Degree</p>
+            <p>B.E. Electronics<br/>MBA Marketing</p>
           </div>
         </div>
         <div class="text-container">
@@ -77,7 +81,9 @@
         </div>
       </div>
     </div>
-    <img src={arrowIcon} alt="Arrow icon" class="icon arrow" data-target="experience" onclick={scrollToSection}/>
+    <div class="page-center">
+      <img src={arrowIcon} alt="Arrow icon" class="icon arrow center-img" data-target="experience" onclick={scrollToSection}/>
+    </div>
   </section>
 
 
@@ -91,46 +97,46 @@
           <div class="article-container">
             <article>
               <img src={checkIcon} alt="Experience icon" class="icon"/>
-              <div><h3>HTML</h3><p>Experienced</p></div>
+              <div><h3>APEX</h3><p>Experienced</p></div>
             </article>
             <article>
               <img src={checkIcon} alt="Experience icon" class="icon"/>
-              <div><h3>CSS</h3><p>Experienced</p></div>
+              <div><h3>LWC</h3><p>Experienced</p></div>
             </article>
             <article>
               <img src={checkIcon} alt="Experience icon" class="icon"/>
-              <div><h3>SASS</h3><p>Intermediate</p></div>
+              <div><h3>FLOWS</h3><p>Experienced</p></div>
             </article>
             <article>
               <img src={checkIcon} alt="Experience icon" class="icon"/>
-              <div><h3>JavaScript</h3><p>Basic</p></div>
+              <div><h3>Integration</h3><p>Experienced</p></div>
             </article>
             <article>
               <img src={checkIcon} alt="Experience icon" class="icon"/>
-              <div><h3>TypeScript</h3><p>Basic</p></div>
+              <div><h3>Experience Cloud</h3><p>Intermediate</p></div>
             </article>
             <article>
               <img src={checkIcon} alt="Experience icon" class="icon"/>
-              <div><h3>Material UI</h3><p>Intermediate</p></div>
+              <div><h3>Sales & Service Cloud</h3><p>Basic</p></div>
             </article>
           </div>
         </div>
 
 
         <div class="details-container">
-          <h2 class="experience-sub-title">Backend & Tools</h2>
+          <h2 class="experience-sub-title">Tools</h2>
           <div class="article-container">
             <article>
               <img src={checkIcon} alt="Experience icon" class="icon"/>
-              <div><h3>PostgreSQL</h3><p>Basic</p></div>
+              <div><h3>Github Actions</h3><p>Intermediate</p></div>
             </article>
             <article>
               <img src={checkIcon} alt="Experience icon" class="icon"/>
-              <div><h3>Node JS</h3><p>Intermediate</p></div>
+              <div><h3>Conga Composer</h3><p>Intermediate</p></div>
             </article>
             <article>
               <img src={checkIcon} alt="Experience icon" class="icon"/>
-              <div><h3>Express JS</h3><p>Intermediate</p></div>
+              <div><h3>Copado</h3><p>Intermediate</p></div>
             </article>
             <article>
               <img src={checkIcon} alt="Experience icon" class="icon"/>
@@ -140,7 +146,9 @@
         </div>
       </div>
     </div>
-    <img src={arrowIcon} alt="Arrow icon" class="icon arrow" data-target="projects" onclick={scrollToSection}/>
+    <div class="page-center">
+      <img src={arrowIcon} alt="Arrow icon" class="icon arrow center-img" data-target="projects" onclick={scrollToSection}/>
+    </div>
   </section>
 
 
@@ -155,8 +163,8 @@
           </div>
           <h2 class="experience-sub-title project-title">Project One</h2>
           <div class="btn-container">
-            <button class="btn btn-color-2 project-btn" data-href="https://github.com/" onclick={openExternal}>Github</button>
-            <button class="btn btn-color-2 project-btn" data-href="https://github.com/" onclick={openExternal}>Live Demo</button>
+            <button class="btn btn-color-2 project-btn" data-href="https://github.com/Aashay2701/minimalist_portfolio" onclick={openExternal}>Github</button>
+            <button class="btn btn-color-2 project-btn" data-href="https://dqy00000xs9kxmab-dev-ed.develop.my.site.com/AashayWase/s/" onclick={openExternal}>Live Demo</button>
           </div>
         </div>
 
@@ -185,37 +193,131 @@
         </div>
       </div>
     </div>
-    <img src={arrowIcon} alt="Arrow icon" class="icon arrow" data-target="contact" onclick={scrollToSection}/>
+    <div class="page-center">
+      <img src={arrowIcon} alt="Arrow icon" class="icon arrow center-img" data-target="contact" onclick={scrollToSection}/>
+    </div>
   </section>
 
 
-  <section id="contact" class="contact section contact-section">
+  <!-- <section id="contact" class="contact section contact-section">
     <p class="section__text__p1">Get in Touch</p>
     <h1 class="title">Contact Me</h1>
     <div class="contact-info-upper-container">
       <div class="contact-info-container">
         <img src={emailIcon} alt="Email icon" class="icon contact-icon email-icon"/>
-        <p><a href="mailto:examplemail@gmail.com">Example@gmail.com</a></p>
+        <p><a href="mailto:aashaywase@icloud.com">aashaywase@icloud.com</a></p>
       </div>
       <div class="contact-info-container">
         <img src={linkedinIcon} alt="LinkedIn icon" class="icon contact-icon"/>
-        <p><a href="https://www.linkedin.com">LinkedIn</a></p>
+        <p><a href="https://www.linkedin.com/in/aashay-wase-%E2%98%81%EF%B8%8F-1647b3165/">LinkedIn</a></p>
       </div>
     </div>
-  </section>
+  </section> -->
+
+  <section id="contact" class="contact section contact-section">
+  <p class="section__text__p1">Get in Touch</p>
+  <h1 class="title">Contact Me</h1>
+
+  <div class="contact-info-upper-container">
+    <div class="contact-info-container">
+      <img src={emailIcon} alt="Email icon" class="icon contact-icon email-icon"/>
+      <p><a href="mailto:aashaywase@icloud.com">aashaywase@icloud.com</a></p>
+    </div>
+    <div class="contact-info-container">
+      <img src={linkedinIcon} alt="LinkedIn icon" class="icon contact-icon"/>
+      <p><a href="https://www.linkedin.com/in/aashay-wase-%E2%98%81%EF%B8%8F-1647b3165/">LinkedIn</a></p>
+    </div>
+  </div>
+
+  <!-- Contact form container -->
+  <div class="contact-form-container">
+    <form class="w2l-form"
+          action="https://webto.salesforce.com/servlet/servlet.WebToLead?encoding=UTF-8&orgId=00DQy00000Xs9kx"
+          method="POST"
+          target="_self">
+
+      <!-- hidden fields required by Salesforce -->
+      <input type="hidden" name="oid" value="00DQy00000Xs9kx" />
+      <input type="hidden" name="retURL" value="https://dqy00000xs9kxmab-dev-ed.develop.my.site.com/AashayWase/s/" />
+
+      <div class="form-row">
+        <label for="salutation">Salutation</label>
+        <select id="salutation" name="salutation">
+          <option value="">--None--</option>
+          <option value="Mr.">Mr.</option>
+          <option value="Ms.">Ms.</option>
+          <option value="Mrs.">Mrs.</option>
+          <option value="Dr.">Dr.</option>
+          <option value="Prof.">Prof.</option>
+          <option value="Mx.">Mx.</option>
+        </select>
+      </div>
+
+      <div class="form-row">
+        <label for="first_name">First Name</label>
+        <input id="first_name" maxlength="40" name="first_name" size="20" type="text" required />
+      </div>
+
+      <div class="form-row">
+        <label for="last_name">Last Name</label>
+        <input id="last_name" maxlength="80" name="last_name" size="20" type="text" required />
+      </div>
+
+      <div class="form-row">
+        <label for="email">Email</label>
+        <input id="email" maxlength="80" name="email" size="20" type="email" required />
+      </div>
+
+      <div class="form-row">
+        <label for="company">Company</label>
+        <input id="company" maxlength="40" name="company" size="20" type="text" />
+      </div>
+
+      <div class="form-row">
+        <label for="mobile">Mobile</label>
+        <input id="mobile" maxlength="40" name="mobile" size="20" type="tel" />
+      </div>
+
+      <!-- Description: Full-width row placed before captcha / send button -->
+      <div class="full-row">
+        <div class="form-row" style="width:100%">
+          <label for="description">Message</label>
+          <textarea id="description"
+                    name="description"
+                    placeholder="Tell me about your project, timeline, or how I can help."
+                    maxlength="2000"
+                    ></textarea>
+        </div>
+      </div>
+
+      <!-- If you keep reCAPTCHA: place the actual script on the host page header -->
+      <div class="full-row">
+        <div id="w2l-recaptcha">
+          <div class="g-recaptcha" data-sitekey="6LdlxtUrAAAAACD_NQon2u0nmW-z2dJrQtHA2Fi8"></div>
+          <!-- <span class="form-hint">Protects from spam — test submissions may require solving.</span> -->
+        </div>
+      </div>
+
+      <!-- submit row (full width) -->
+      <div class="full-row">
+        <button type="submit" class="btn btn-primary">Send Message</button>
+      </div>
+    </form>
+  </div>
+</section>
 
 
   <footer>
     <nav>
       <div class="nav-links-container">
         <ul class="nav-links">
-          <li><a href="#about">About</a></li>
-          <li><a href="#experience">Experience</a></li>
-          <li><a href="#projects">Projects</a></li>
-          <li><a href="#contact">Contact</a></li>
+          <li><a data-target="about" onclick={scrollToSection}>About</a></li>
+          <li><a data-target="experience" onclick={scrollToSection}>Experience</a></li>
+          <li><a data-target="projects" onclick={scrollToSection}>Projects</a></li>
+          <li><a data-target="contact" onclick={scrollToSection}>Contact</a></li>
         </ul>
       </div>
     </nav>
-    <p>Copyright &#169; 2023 John Doe. All Rights Reserved.</p>
+    <p>Copyright &#169; 2025 Aashay Wase. All Rights Reserved.</p>
   </footer>
 </template>

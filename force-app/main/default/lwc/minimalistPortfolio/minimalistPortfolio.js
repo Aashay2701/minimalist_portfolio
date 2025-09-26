@@ -1,9 +1,14 @@
 import { LightningElement, track } from 'lwc';
 import PORTFOLIO_ASSETS from '@salesforce/resourceUrl/portfolio_assets';
+import profilePic from '@salesforce/resourceUrl/profile_pic';
+import aboutPic from '@salesforce/resourceUrl/about_pic';
+
+import myLogo from '@salesforce/resourceUrl/awLogo'; 
 
 
 export default class MinimalistPortfolio extends LightningElement {
   @track isMenuOpen = false;
+  awLogo = myLogo;
   // basic responsive flag: you can replace with better approach (ResizeObserver)
   get isDesktop() {
     return window.innerWidth > 1200;
@@ -11,8 +16,8 @@ export default class MinimalistPortfolio extends LightningElement {
 
 
   // Static resource image paths (assumes you uploaded the assets as a static resource named 'portfolio_assets')
-  profilePic = `${PORTFOLIO_ASSETS}/profile-pic.png`;
-  aboutPic = `${PORTFOLIO_ASSETS}/about-pic.png`;
+  profilePic = profilePic;
+  aboutPic = aboutPic;
   experienceIcon = `${PORTFOLIO_ASSETS}/experience.png`;
   educationIcon = `${PORTFOLIO_ASSETS}/education.png`;
   arrowIcon = `${PORTFOLIO_ASSETS}/arrow.png`;
@@ -81,6 +86,7 @@ export default class MinimalistPortfolio extends LightningElement {
     const target = event.currentTarget.dataset.target;
     if (target) {
       this.scrollToId(target);
+      console.log('Scrolling to:', target);
     }
   }
   
@@ -89,11 +95,11 @@ export default class MinimalistPortfolio extends LightningElement {
       if (!id) return;
     
       // Use attribute selector inside component
-      let el = this.template.querySelector('.contact');
+      let el = this.template.querySelector(`.${id}`);
     
       // If not found in template, fallback to global document
       if (!el) {
-        el = document.querySelector('.contact');
+        el = document.querySelector(`.${id}`);
       }
     
       if (el) {

@@ -1,8 +1,23 @@
 * { margin:0; padding:0; }
-:host { font-family: "Poppins", sans-serif; display:block; }
+:host { font-family: 'SUSE Mono Variable', monospace; display:block; }
 
 
 p { color: rgb(85,85,85); }
+
+@font-face {
+  font-family: 'SUSE Mono Variable';
+  /* prefer woff2; ttf fallback if needed */
+  src: url('/resource/googleFont/SUSEMono-VariableFont_wght.ttf') format('truetype');
+  font-weight: 100 900; /* variable font supports a continuous range */
+  font-style: normal;
+  font-display: swap;
+}
+
+.mono {
+  font-family: 'SUSE Mono Variable', monospace;
+  /* you can just use font-weight normally: */
+  /* font-weight: 400; */
+}
 
 
 /* TRANSITION */
@@ -12,9 +27,27 @@ a, .btn { transition: all 300ms ease; }
 /* NAV */
 nav, .nav-links { display:flex; }
 nav { justify-content: space-around; align-items:center; height:17vh; }
-.nav-links { gap:2rem; list-style:none; font-size:1.5rem; }
+.nav-links { gap:2rem; list-style:none; font-size:1.2rem; }
 a { color:black; text-decoration:none; }
 a:hover { color:grey; text-decoration:underline; text-underline-offset:1rem; }
+
+.desktop-nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000; /* keep it above all sections */
+  background: rgba(255, 255, 255, 0.9); /* optional semi-transparent */
+  backdrop-filter: blur(6px);            /* optional blur */
+  -webkit-backdrop-filter: blur(6px);
+  box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+}
+
+/* Remove vertical height pushing down */
+nav.desktop-nav {
+  height: auto;
+  padding: 1rem 3rem;
+}
 
 
 /* LOGO */
@@ -39,14 +72,16 @@ a:hover { color:grey; text-decoration:underline; text-underline-offset:1rem; }
 
 
 /* SECTIONS */
-section { padding-top:4vh; height:96vh; margin:0 10rem; box-sizing:border-box; min-height:fit-content; }
+section { height:96vh; margin:0 10rem; box-sizing:border-box; min-height:fit-content; }
 .section-container { display:flex; gap:4rem; height:80%; }
 
 
 /* PROFILE */
-.profile { display:flex; justify-content:center; gap:5rem; height:80vh; }
+.profile { display:flex; justify-content:center; gap:5rem; }
 .section__pic-container { display:flex; height:400px; width:400px; margin:auto 0; }
+.section__pic-container1 { display:flex; margin:auto 0; max-width: 300px; max-height: 440px; width: auto; height: auto;}
 .section__text { align-self:center; text-align:center; }
+.section__text__p1 { text-align: center; }
 .section__text__p2 { font-size:1.75rem; margin-bottom:1rem; }
 .title { font-size:3rem; text-align:center; }
 .socials-container { display:flex; justify-content:center; margin-top:1rem; gap:1rem; }
@@ -54,6 +89,17 @@ section { padding-top:4vh; height:96vh; margin:0 10rem; box-sizing:border-box; m
 
 /* ICONS */
 .icon { cursor:pointer; height:2rem; }
+
+.page-center {
+  display: flex;
+  justify-content: center;  /* horizontal */
+  align-items: center;      /* vertical */
+}
+
+.center-img {
+  max-width: 100%;   /* responsive */
+  max-height: 100%;
+}
 
 
 /* BUTTONS */
@@ -64,7 +110,7 @@ section { padding-top:4vh; height:96vh; margin:0 10rem; box-sizing:border-box; m
 
 
 /* ABOUT */
-.about { position:relative; }
+.about { position:relative; padding-top: 15vh;}
 .about-containers { gap:2rem; margin-bottom:2rem; margin-top:2rem; display:flex; }
 .about-details-container { justify-content:center; flex-direction:column; display:flex; }
 .about-pic { border-radius:2rem; }
@@ -75,20 +121,22 @@ section { padding-top:4vh; height:96vh; margin:0 10rem; box-sizing:border-box; m
 
 
 /* EXPERIENCE */
+.experience { padding-top: 15vh; }
 .experience-sub-title { color: rgb(85,85,85); font-weight:600; font-size:1.75rem; margin-bottom:2rem; }
 .experience-details-container { display:flex; justify-content:center; flex-direction:column; }
 .article-container { display:flex; text-align:initial; flex-wrap:wrap; flex-direction:row; gap:2.5rem; justify-content:space-around; }
-article { display:flex; width:10rem; justify-content:space-around; gap:0.5rem; }
+article { display:flex; width:10rem; gap:0.5rem; }
 
 
 /* PROJECTS */
-.color-container { border-color: rgb(163,163,163); background: rgb(250,250,250); }
+.projects { padding-top: 15vh;}
+.color-container { border-color: rgb(163,163,163); background: rgb(250,250,250); padding-top: 15vh;}
 .project-img { border-radius:2rem; width:90%; height:90%; }
 .project-title { margin:1rem; color:black; }
 
 
 /* CONTACT */
-.contact { display:flex; justify-content:center; flex-direction:column; height:70vh; }
+.contact { display:flex; justify-content:center; flex-direction:column; height:70vh; padding-top: 15vh;}
 .contact-info-upper-container { display:flex; justify-content:center; border-radius:2rem; border: rgb(53,53,53) 0.1rem solid; border-color: rgb(163,163,163); background: (250,250,250); margin:2rem auto; padding:0.5rem; }
 .contact-info-container { display:flex; align-items:center; justify-content:center; gap:0.5rem; margin:1rem; }
 .contact-info-container p { font-size:larger; }
@@ -137,4 +185,153 @@ footer p { text-align:center; }
   .section__text__p2 { font-size:1.25rem; }
   .title { font-size:2rem; }
   .text-container { text-align:justify; }
+}
+
+/* ===== Web-to-Lead form styles (matches minimalist style) ===== */
+.contact-form-container {
+  max-width: 920px;
+  margin: 1.75rem auto;
+  padding: 1.5rem;
+  background: white;
+  border-radius: 1.25rem;
+  border: 0.1rem solid rgb(163,163,163);
+  box-shadow: 0 6px 18px rgba(0,0,0,0.03);
+  box-sizing: border-box;
+}
+
+/* Use grid for form layout */
+.w2l-form {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem 1.5rem;
+  align-items: start;
+}
+
+/* Make it single column on small screens */
+@media screen and (max-width: 900px) {
+  .w2l-form {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Row wrapper (keeps spacing consistent with site) */
+.w2l-form .form-row {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+/* Labels look like the rest of the site */
+.w2l-form label {
+  font-weight: 600;
+  color: rgb(85,85,85);
+  font-size: 0.95rem;
+  letter-spacing: 0.2px;
+}
+
+/* Inputs/selects */
+.w2l-form input[type="text"],
+.w2l-form input[type="email"],
+.w2l-form input[type="tel"],
+.w2l-form select,
+.w2l-form textarea {
+  border-radius: 0.9rem;
+  padding: 0.8rem 1rem;
+  border: 0.08rem solid rgb(163,163,163);
+  background: #fff;
+  font-size: 0.95rem;
+  outline: none;
+  box-sizing: border-box;
+  transition: box-shadow 180ms ease, border-color 180ms ease;
+}
+
+/* Larger textarea (if you add Description later) */
+.w2l-form textarea { min-height: 120px; resize: vertical; }
+
+/* Focus state */
+.w2l-form input:focus,
+.w2l-form select:focus,
+.w2l-form textarea:focus {
+  box-shadow: 0 6px 18px rgba(0,0,0,0.06);
+  border-color: rgb(120,120,120);
+}
+
+/* Full width rows (useful for captcha / submit) */
+.w2l-form .full-row {
+  grid-column: 1 / -1;
+  display:flex;
+  justify-content: flex-start;
+  gap: 1rem;
+  align-items: center;
+}
+
+/* reCAPTCHA container alignment */
+.w2l-recaptcha {
+  display:flex;
+  align-items:center;
+}
+
+/* Button: reuse existing .btn look, but ensure match in-grid sizing */
+.w2l-form .btn {
+  border-radius: 2rem;
+  padding: 0.85rem 1.25rem;
+  min-width: 9rem;
+  font-weight: 700;
+  display:inline-block;
+  border: 0.08rem solid rgb(53,53,53);
+  background: transparent;
+}
+
+/* Primary submit variant (fills background) */
+.w2l-form .btn-primary {
+  background: rgb(53,53,53);
+  color: white;
+  border-color: rgb(53,53,53);
+}
+
+.w2l-form .btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+}
+
+/* Small helper text (errors / hints) */
+.form-hint {
+  font-size: 0.85rem;
+  color: rgb(120,120,120);
+}
+
+/* Make contact-info + form align visually with rest of page */
+.contact-info-upper-container {
+  margin-bottom: 1rem; /* reduced so form sits closer */
+  padding: 0.6rem;
+}
+
+/* Description textarea (matches other inputs, full-width) */
+.w2l-form textarea {
+  width: 100%;
+  min-height: 140px;
+  padding: 1rem;
+  border-radius: 0.9rem;
+  border: 0.08rem solid rgb(163,163,163);
+  font-size: 0.95rem;
+  line-height: 1.45;
+  box-sizing: border-box;
+  resize: vertical;
+  background: #fff;
+  transition: box-shadow 180ms ease, border-color 180ms ease;
+}
+
+/* Keep the helper text spacing consistent */
+.w2l-form .form-hint { margin-top: 0.45rem; color: rgb(120,120,120); }
+
+/* Mobile tweaks */
+@media screen and (max-width: 600px) {
+  .contact-form-container { padding: 1rem; margin: 1rem; }
+  .w2l-form .full-row { justify-content: center; }
+  .w2l-form .btn { width: 100%; text-align:center; }
+}
+
+/* optional: small responsive tweak for captcha to center */
+@media screen and (max-width: 480px) {
+  .w2l-recaptcha { justify-content: center; width:100%; }
 }
